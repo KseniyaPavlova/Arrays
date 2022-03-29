@@ -2,6 +2,8 @@
 #include<iostream>
 using namespace std;
 
+//#define SDVIG_VLEVO
+#define SDVIG_VPRAVO
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -15,6 +17,7 @@ void main()
 	}
 	cout << endl;
 
+#ifdef SDVIG_VLEVO
 	//Циклический сдвиг массива:
 	int number_of_shifts;  //количество сдвигов
 	cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
@@ -34,8 +37,31 @@ void main()
 		cout << arr[i] << "\t";
 	}
 	cout << endl;
+#endif // SDVIG_VLEVO
 
-	
+
+#ifdef SDVIG_VPRAVO
+	//Циклический сдвиг массива:
+	int number_of_shifts;  //количество сдвигов
+	cout << "Введите количество сдвигов: "; cin >> number_of_shifts;
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		int buffer = arr[n - 1];
+		for (int i = n - 1; i > 0; i--)
+		{
+			arr[i] = arr[i - 1];
+		}
+		arr[0] = buffer;
+	}
+
+	//Вывод сдвинутого массива на экран
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+#endif // SDVIG_VPRAVO
+
 
 
 
